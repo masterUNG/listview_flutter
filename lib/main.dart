@@ -40,12 +40,13 @@ class MyState extends State<MyStateFulWidget>{
         if (index >= myRandomWordArray.length) {
           myRandomWordArray.addAll(generateWordPairs().take(10));
         }
-        return buildListTitle(myRandomWordArray[index]);
+        return buildListTitle(myRandomWordArray[index], index);
       }),
     );
   }
-  Widget buildListTitle(WordPair wordPair) {
+  Widget buildListTitle(WordPair wordPair, int index) {
+    final showColor = index % 2 == 0 ? Colors.red : Colors.blue;
     return new ListTile(title: new Text(wordPair.asUpperCase,
-      style: new TextStyle(fontSize: 25.0, color: Colors.red),),);
+      style: new TextStyle(fontSize: 25.0, color: showColor),),);
   } // Widget
 }
