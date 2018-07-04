@@ -30,17 +30,23 @@ class MyState extends State<MyStateFulWidget>{
 
 //  Create Content
   final myRandomWord = new WordPair.random();
+  final myRandomWordArray = <WordPair>[];
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(title: new Text('This is appBar'),),
-      body: new Center(child: new Text(myRandomWord.asUpperCase,
-        style: new TextStyle(fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
-            color: Colors.blue),),),
+      body: new ListView.builder(itemBuilder: (context, index) {
+        if (index >= myRandomWordArray.length) {
+          myRandomWordArray.addAll(generateWordPairs().take(10));
+        }
+        return buildListTitle(myRandomWordArray[index]);
+      }),
     );
   }
+  Widget buildListTitle(WordPair wordPair) {
+    return new ListTile(title: new Text(wordPair.asUpperCase,
+      style: new TextStyle(fontSize: 25.0, color: Colors.red),),);
+  } // Widget
 }
