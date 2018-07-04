@@ -28,6 +28,7 @@ class MyStateFulWidget extends StatefulWidget{
 // ignore: type_argument_not_matching_bounds
 class MyState extends State<MyStateFulWidget>{
 
+//  Create Content
   final myRandomWord = new WordPair.random();
 
   @override
@@ -35,7 +36,11 @@ class MyState extends State<MyStateFulWidget>{
     // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(title: new Text('This is appBar'),),
-      body: new Center(child: new Text(myRandomWord.asUpperCase),),
+      body: new Center(child: new Text(myRandomWord.asUpperCase,
+        style: new TextStyle(fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic,
+            color: Colors.blue),),),
     );
   }
 }
