@@ -28,8 +28,9 @@ class MyStateFulWidget extends StatefulWidget{
 class MyState extends State<MyStateFulWidget>{
 
 //  Create Content
-  final myRandomWord = new WordPair.random();
+
   final myRandomWordArray = <WordPair>[];
+  final myCheckedWords = new Set<WordPair>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,10 @@ class MyState extends State<MyStateFulWidget>{
   }
   Widget buildListTitle(WordPair wordPair, int index) {
     final showColor = index % 2 == 0 ? Colors.red : Colors.blue;
-    return new ListTile(title: new Text(wordPair.asUpperCase,
+    final isChecked = myCheckedWords.contains(wordPair);
+    return new ListTile(
+      leading: new Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank),
+      title: new Text(wordPair.asUpperCase,
       style: new TextStyle(fontSize: 25.0, color: showColor),),);
   } // Widget
 }
