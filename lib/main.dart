@@ -49,8 +49,20 @@ class MyState extends State<MyStateFulWidget>{
     final showColor = index % 2 == 0 ? Colors.red : Colors.blue;
     final isChecked = myCheckedWords.contains(wordPair);
     return new ListTile(
-      leading: new Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank),
+      leading: new Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank,
+        color: showColor,),
       title: new Text(wordPair.asUpperCase,
-      style: new TextStyle(fontSize: 25.0, color: showColor),),);
+      style: new TextStyle(fontSize: 25.0, color: showColor),
+      ),
+      onTap: (){
+        setState(() {
+            if (isChecked) {
+              myCheckedWords.remove(wordPair);
+            } else {
+              myCheckedWords.add(wordPair);
+            }
+        });
+      },
+    );
   } // Widget
 }
