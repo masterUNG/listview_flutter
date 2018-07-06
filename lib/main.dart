@@ -36,7 +36,11 @@ class MyState extends State<MyStateFulWidget>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: new AppBar(title: new Text('This is appBar'),),
+      appBar: new AppBar(title: new Text('This is appBar'),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: null)
+        ],
+      ),
       body: new ListView.builder(itemBuilder: (context, index) {
         if (index >= myRandomWordArray.length) {
           myRandomWordArray.addAll(generateWordPairs().take(10));
