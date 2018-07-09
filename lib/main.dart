@@ -38,7 +38,7 @@ class MyState extends State<MyStateFulWidget>{
     return new Scaffold(
       appBar: new AppBar(title: new Text('This is appBar'),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.list), onPressed: null)
+          new IconButton(icon: new Icon(Icons.list), onPressed: clickOnIcon)
         ],
       ),
       body: new ListView.builder(itemBuilder: (context, index) {
@@ -48,7 +48,12 @@ class MyState extends State<MyStateFulWidget>{
         return buildListTitle(myRandomWordArray[index], index);
       }),
     );
+  } // build
+
+  clickOnIcon() {
+    print("You Click Icon");
   }
+
   Widget buildListTitle(WordPair wordPair, int index) {
     final showColor = index % 2 == 0 ? Colors.red : Colors.blue;
     final isChecked = myCheckedWords.contains(wordPair);
