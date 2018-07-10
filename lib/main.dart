@@ -52,7 +52,19 @@ class MyState extends State<MyStateFulWidget>{
 
   clickOnIcon() {
     print("You Click Icon");
-  }
+    
+    final pageRoute = new MaterialPageRoute(builder: (context) {
+      final listTiles = myCheckedWords.map((wordPair) {
+          return new ListTile(title: new Text(wordPair.asUpperCase,
+            style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),), );
+      });
+      return new Scaffold(appBar: new AppBar(title: new Text("Checked Word"),),
+        body: new ListView(children: listTiles.toList(),),);
+    });
+
+    Navigator.of(context).push(pageRoute);
+
+  } // clickOnIcon
 
   Widget buildListTitle(WordPair wordPair, int index) {
     final showColor = index % 2 == 0 ? Colors.red : Colors.blue;
